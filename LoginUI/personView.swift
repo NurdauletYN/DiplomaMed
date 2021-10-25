@@ -10,36 +10,37 @@ import SwiftUI
 
 struct personView: View {
     @State var index = 0
+    
     var body: some View {
         VStack{
             
-            HStack(spacing: 15){
+            HStack(){
                 
                 Button(action: {
                     
                 }) {
                     
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 22))
-                        .foregroundColor(.black)
+                   
                 }
                 
                 Text("Profile")
                     .font(.title)
+                    .padding()
                 
-                Spacer(minLength: 0)
+                Spacer()
                 
-                Button(action: {
-                    
-                }) {
-                    
-                    Text("Add")
-                        .foregroundColor(.white)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 25)
-                        .background(Color("Color"))
-                        .cornerRadius(10)
-                }
+                
+                VStack{
+                
+                            
+                            Button(action: {
+                                UserDefaults.standard.set(false, forKey: "status")
+                                NotificationCenter.default.post(name:
+                                                                    NSNotification.Name("statusChange"), object: nil)
+                            }){
+                                Text("Logout")
+                            }
+                        }
             }
             .padding()
             
@@ -87,184 +88,108 @@ struct personView: View {
             .padding(.horizontal, 20)
             .padding(.top, 10)
             
+            Spacer()
             // Tab Items...
             
-            HStack{
-                
-                Button(action: {
+            ScrollView{
+                VStack{
+                    HStack{
+                        Image("name")
+                            .resizable()
+                            .frame(width:70, height: 70)
+                            .padding()
+                        Text("Name")
+                        Spacer()
+                        Text("Nurdaulet")
+                            .position(x: 130, y: 50)
+                        Spacer()
+                    }
+                    .background(Color(#colorLiteral(red: 0.9269981983, green: 0.9066763259, blue: 0.9156738522, alpha: 1)))
                     
-                    self.index = 0
+                    .cornerRadius(50)
+                    .padding()
+                    HStack{
+                        Image("date")
+                            .resizable()
+                            .frame(width:70, height: 70)
+                            .padding()
+                            
+                        
+                        Text("Date of birth")
+                        
+                        Spacer()
+                        Text("31.12.2000")
+                        Spacer()
+                    }
+                    .background(Color(#colorLiteral(red: 0.9269981983, green: 0.9066763259, blue: 0.9156738522, alpha: 1)))
                     
-                }) {
+                    .cornerRadius(50)
+                    .padding()
                     
-                    Text("Experinces")
-                        .foregroundColor(self.index == 0 ? Color.white : .gray)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .background(self.index == 0 ? Color("Color") : Color.clear)
-                        .cornerRadius(10)
-                }
-                
-                Spacer(minLength: 0)
-                
-                Button(action: {
+                    HStack{
+                        Image("gender")
+                            .resizable()
+                            .frame(width:70, height: 70)
+                            .padding()
+                            
+                        
+                        Text("Gender")
+                        
+                        Spacer()
+                        Text("Male")
+                        Spacer()
+                    }
+                    .background(Color(#colorLiteral(red: 0.9269981983, green: 0.9066763259, blue: 0.9156738522, alpha: 1)))
                     
-                    self.index = 1
+                    .cornerRadius(50)
+                    .padding()
                     
-                }) {
+                    HStack{
+                        Image("person")
+                            .resizable()
+                            .frame(width:70, height: 70)
+                            .padding()
+                            
+                        
+                        Text("Weigth")
+                        
+                        Spacer()
+                        Text("78kg")
+                        Spacer()
+                    }
+                    .background(Color(#colorLiteral(red: 0.9269981983, green: 0.9066763259, blue: 0.9156738522, alpha: 1)))
                     
-                    Text("Rates")
-                        .foregroundColor(self.index == 1 ? Color.white : .gray)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .background(self.index == 1 ? Color("Color") : Color.clear)
-                        .cornerRadius(10)
-                }
-                
-                Spacer(minLength: 0)
-                
-                Button(action: {
+                    .cornerRadius(50)
+                    .padding()
                     
-                    self.index = 2
+
+                    HStack{
+                        Image("person")
+                            .resizable()
+                            .frame(width:70, height: 70)
+                            .padding()
+                            
+                        
+                        Text("Height")
+                        
+                        Spacer()
+                        Text("180")
+                        Spacer()
+                    }
+                    .background(Color(#colorLiteral(red: 0.9269981983, green: 0.9066763259, blue: 0.9156738522, alpha: 1)))
                     
-                }) {
+                    .cornerRadius(50)
+                    .padding()
                     
-                    Text("Charts")
-                        .foregroundColor(self.index == 2 ? Color.white : .gray)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .background(self.index == 2 ? Color("Color") : Color.clear)
-                        .cornerRadius(10)
+                    
+                        
+                    
+                        
                 }
             }
-            .padding(.horizontal,8)
-            .padding(.vertical,5)
-            .background(Color("Color1"))
-            .cornerRadius(8)
-            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
-            .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
-            .padding(.horizontal)
-            .padding(.top,25)
-            
-            // Cards...
-            
-            HStack(spacing: 20){
-                
-                VStack(spacing: 12){
-                    
-                    Image("twitter")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    
-                    Text("Twitter")
-                        .font(.title)
-                        .padding(.top,10)
-                    
-                    Text("UI Designer")
-                        .foregroundColor(Color("Color"))
-                    
-                    Text("1 Year")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical)
-                // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width - 60) / 2)
-                .background(Color("Color1"))
-                .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
-                .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
-                // shadows...
-                
-                VStack(spacing: 12){
-                    
-                    Image("apple")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    
-                    Text("Apple")
-                        .font(.title)
-                        .padding(.top,10)
-                    
-                    Text("UI/UX Designer")
-                        .foregroundColor(Color("Color"))
-                    
-                    Text("3 Year")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical)
-                // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width - 60) / 2)
-                .background(Color("Color1"))
-                .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
-                .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
-                // shadows...
-                
-            }
-            .padding(.top,20)
-            
-            HStack(spacing: 20){
-                
-                VStack(spacing: 12){
-                    
-                    Image("pinterest")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    
-                    Text("Pinterest")
-                        .font(.title)
-                        .padding(.top,10)
-                    
-                    Text("UI Designer")
-                        .foregroundColor(Color("Color"))
-                    
-                    Text("2 Year")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical)
-                // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width - 60) / 2)
-                .background(Color("Color1"))
-                .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
-                .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
-                // shadows...
-                
-                VStack(spacing: 12){
-                    
-                    Image("fb")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    
-                    Text("Facebook")
-                        .font(.title)
-                        .padding(.top,10)
-                    
-                    Text("UX Designer")
-                        .foregroundColor(Color("Color"))
-                    
-                    Text("1 Year")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical)
-                // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width - 60) / 2)
-                .background(Color("Color1"))
-                .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
-                .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
-                // shadows...
-                
-            }
-            .padding(.top,20)
-            
-            Spacer(minLength: 0)
-        }
-        .background(Color("Color1").edgesIgnoringSafeArea(.all))
+        }.background(Color(#colorLiteral(red: 1, green: 0.9406956768, blue: 0.9494711099, alpha: 1)))
+        .edgesIgnoringSafeArea(.all)
+        
     }
     }
 

@@ -9,27 +9,38 @@
 import SwiftUI
 
 struct mainUi: View {
+  
+    
     var body: some View {
        
+        
             TabView{
                 homeView()
                     .tabItem {
-                        Image(systemName: "smiley.fill")
+                        Text("Home").font(.system(size: 30, weight: .bold, design: .rounded))
+                        Image(systemName: "house")
                     }
-                heartView()
+                ContactView()
                     .tabItem {
-                        Image(systemName: "heart")
+                        Text("Pills").font(.system(size: 30, weight: .bold, design: .rounded))
+                        Image(systemName: "pills")
                     }
                 
                 calendarView()
                     .tabItem {
-                        Image(systemName: "calendar")
+                        Text("Map").font(.system(size: 30, weight: .bold, design: .rounded))
+                        Image(systemName: "map")
                     }
                 personView()
                     .tabItem {
+                        Text("Profile").font(.system(size: 30, weight: .bold, design: .rounded))
                         Image(systemName: "person")
                     }
-            }
+            
+        }
+            
+        
+            
 }
 
 struct mainUi_Previews: PreviewProvider {

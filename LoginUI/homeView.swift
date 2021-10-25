@@ -65,18 +65,7 @@ struct homeView : View{
                     .background(Color(#colorLiteral(red: 0.959171875, green: 0.959171875, blue: 0.959171875, alpha: 1)))
                     .cornerRadius(20)
                     .edgesIgnoringSafeArea(.bottom)
-                    
-                    VStack{
-                    
-                                Text("Home")
-                                Button(action: {
-                                    UserDefaults.standard.set(false, forKey: "status")
-                                    NotificationCenter.default.post(name:
-                                                                        NSNotification.Name("statusChange"), object: nil)
-                                }){
-                                    Text("Logout")
-                                }
-                            }
+                   
                     
                 }
             }
@@ -202,8 +191,10 @@ struct Calendar: View {
 }
 
 struct Alert: View {
+    @State private var isShowing = true
     var body: some View {
-        VStack{
+        if isShowing {
+            VStack{
             HStack(alignment: .top){
                 Image("drug1")
                     .resizable()
@@ -230,7 +221,9 @@ struct Alert: View {
             
             HStack{
                 Spacer()
-                Button(action: {}){
+                Button(action: {
+                    self.isShowing.toggle()
+                }){
                     HStack{
                         Image(systemName: "xmark")
                         Text("Skip")
@@ -239,7 +232,9 @@ struct Alert: View {
                 
                 Spacer()
                 
-                Button(action: {}){
+                Button(action: {
+                    self.isShowing.toggle()
+                }){
                     HStack{
                         Image(systemName: "checkmark")
                         Text("Done")
@@ -249,14 +244,14 @@ struct Alert: View {
                 Spacer()
             }
             
-        }
+        }.transition(.scale)
         .padding(30)
         .background(Color(#colorLiteral(red: 0.2793821692, green: 0.287648201, blue: 0.6285293698, alpha: 1)))
         .foregroundColor(Color.white)
         .cornerRadius(20).padding(.bottom)
-    }
+        }
 }
-
+}
 struct GABAPENTIN: View {
     var body: some View {
         HStack{

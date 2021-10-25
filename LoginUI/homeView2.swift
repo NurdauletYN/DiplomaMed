@@ -9,10 +9,20 @@
 import SwiftUI
 
 struct homeView2: View {
+    @State var showLoginView: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                VStack {
+                    if showLoginView {
+                        homeView()
+                    } else {
+                        Button(action: {self.showLoginView = true}, label: {
+                            Image(systemName: "house.circle.fill").frame(width: 200, height: 200)
+                        })
+                    }
+                }
+            }
     }
-}
+
 
 struct homeView2_Previews: PreviewProvider {
     static var previews: some View {
